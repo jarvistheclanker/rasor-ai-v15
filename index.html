@@ -81,7 +81,7 @@ body {
   font-family: var(--font-sans);
   font-weight: 300;
   overflow-x: hidden;
-  cursor: none;
+  cursor: auto;
   line-height: 1.6;
 }
 @media (hover: none) { body { cursor: auto; } }
@@ -255,7 +255,7 @@ nav.scrolled {
   border: none;
   padding: 10px 22px;
   border-radius: var(--radius);
-  cursor: none;
+  cursor: auto;
   transition: opacity .2s, transform .2s;
   text-decoration: none;
 }
@@ -267,7 +267,7 @@ body[data-path="executive"] .nav-cta { background: var(--amber); }
   display: none;
   flex-direction: column;
   gap: 5px;
-  cursor: none;
+  cursor: auto;
   padding: 4px;
   background: none;
   border: none;
@@ -446,7 +446,7 @@ body[data-path="executive"] .hero-headline .line-3 {
   border-radius: var(--radius-lg);
   background: transparent;
   color: var(--text);
-  cursor: none;
+  cursor: auto;
   transition: border-color .3s, background .3s;
   text-align: left;
   min-width: 200px;
@@ -489,7 +489,7 @@ body[data-path="executive"] .path-btn.active { border-color: var(--amber); backg
   border: none;
   padding: 14px 28px;
   border-radius: var(--radius);
-  cursor: none;
+  cursor: auto;
   text-decoration: none;
   transition: opacity .2s, transform .2s;
   white-space: nowrap;
@@ -510,7 +510,7 @@ body[data-path="executive"] .btn-primary { background: var(--amber); }
   border: 1px solid var(--border);
   padding: 14px 28px;
   border-radius: var(--radius);
-  cursor: none;
+  cursor: auto;
   text-decoration: none;
   transition: color .2s, border-color .2s;
   white-space: nowrap;
@@ -611,7 +611,7 @@ body[data-path="executive"] .demo-input:focus { border-color: var(--amber); }
   border: none;
   padding: 14px 28px;
   border-radius: var(--radius);
-  cursor: none;
+  cursor: auto;
   transition: opacity .2s;
   width: 100%;
 }
@@ -694,7 +694,7 @@ body[data-path="executive"] .transcript-status .t-dot { background: var(--amber)
   border: 1px solid var(--border);
   padding: 5px 12px;
   border-radius: var(--radius);
-  cursor: none;
+  cursor: auto;
   transition: color .2s, border-color .2s;
 }
 .transcript-replay:hover { color: var(--text); border-color: var(--border-2); }
@@ -996,7 +996,7 @@ body[data-path="executive"] .problem-big span { color: var(--amber); }
   color: var(--green);
   text-decoration: none;
   transition: gap .2s;
-  cursor: none;
+  cursor: auto;
 }
 .track-link:hover { gap: 14px; }
 .track-card.exec .track-link { color: var(--amber); }
@@ -1108,7 +1108,7 @@ body[data-path="executive"] .process-step::before { background: var(--amber); }
   background: none;
   border: none;
   color: var(--text);
-  cursor: none;
+  cursor: auto;
   text-align: left;
   gap: 16px;
 }
@@ -1363,7 +1363,7 @@ body[data-path="executive"] .d-card-icon { color: var(--amber); }
   text-transform: uppercase;
   padding: 13px 24px;
   border-radius: var(--radius);
-  cursor: none;
+  cursor: auto;
   text-decoration: none;
   transition: opacity .2s;
   margin-top: auto;
@@ -2114,12 +2114,14 @@ footer {
 
   /* --- PRELOADER --- */
   window.addEventListener('load', function() {
-    setTimeout(function() {
+    // Force show all reveals after preloader
+      document.querySelectorAll(".reveal").forEach(function(el){el.classList.add("visible");});
+      setTimeout(function() {
       var pl = document.getElementById('preloader');
       if (pl) pl.classList.add('hidden');
       // start transcript after preloader
       setTimeout(runTranscript, 600);
-    }, 1800);
+    }, 800);
   });
 
   /* --- PATH SWITCHER --- */
@@ -2249,9 +2251,13 @@ footer {
     clearTimeout(tTimer);
     var delays = [400, 1800, 3400, 5000, 6800];
     transcriptLines.forEach(function(line, i) {
-      tTimer = setTimeout(function() { line.classList.add('show'); }, delays[i] || (i * 1600));
+      tTimer = // Force show all reveals after preloader
+      document.querySelectorAll(".reveal").forEach(function(el){el.classList.add("visible");});
+      setTimeout(function() { line.classList.add('show'); }, delays[i] || (i * 1600));
     });
-    setTimeout(function() {
+    // Force show all reveals after preloader
+      document.querySelectorAll(".reveal").forEach(function(el){el.classList.add("visible");});
+      setTimeout(function() {
       if (transcriptBadges) transcriptBadges.classList.add('show');
     }, 9000);
   }
@@ -2277,6 +2283,8 @@ footer {
     if (val.length < 10) {
       input.style.borderColor = 'rgba(239,68,68,0.6)';
       input.placeholder = 'Enter a valid US number';
+      // Force show all reveals after preloader
+      document.querySelectorAll(".reveal").forEach(function(el){el.classList.add("visible");});
       setTimeout(function() {
         input.style.borderColor = '';
         input.placeholder = '+1 (480) 000-0000';
@@ -2286,7 +2294,9 @@ footer {
     if (submit) submit.style.display = 'none';
     if (calling) calling.style.display = 'flex';
     // Graceful fallback — open tel link (Retell API integration goes here)
-    setTimeout(function() {
+    // Force show all reveals after preloader
+      document.querySelectorAll(".reveal").forEach(function(el){el.classList.add("visible");});
+      setTimeout(function() {
       window.location.href = 'tel:+14803767992';
     }, 1200);
   };
