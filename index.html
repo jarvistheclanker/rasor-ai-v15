@@ -104,15 +104,7 @@ body::before {
    PRELOADER
    ============================================================ */
 #preloader {
-  position: fixed;
-  inset: 0;
-  background: var(--bg);
-  z-index: 10000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  
-  transform-origin: top;
+  display: none !important;
 }
 #preloader.hidden { transform: translateY(-100%); pointer-events: none; }
 .preloader-logo {
@@ -178,9 +170,8 @@ body[data-path="executive"] .cursor-glow {
    SCROLL REVEAL
    ============================================================ */
 .reveal {
-  
-  
-  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+  opacity: 1 !important;
+  transform: none !important;
 }
 .reveal.visible { opacity: 1; transform: none; }
 .reveal-d1 { transition-delay: 0.1s; }
@@ -347,7 +338,7 @@ body[data-path="executive"] .exec-only-flex { display: flex; }
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding: 160px var(--pad) var(--gap);
+  padding: 120px var(--pad) 80px;
   position: relative;
   overflow: hidden;
 }
