@@ -111,7 +111,7 @@ body::before {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.8s var(--ease-in);
+  
   transform-origin: top;
 }
 #preloader.hidden { transform: translateY(-100%); pointer-events: none; }
@@ -122,8 +122,8 @@ body::before {
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--text);
-  opacity: 0;
-  animation: plFade 1.6s ease-in-out forwards;
+  
+  opacity:0;
 }
 .preloader-logo span { color: var(--green); }
 @keyframes plFade { 0%,100%{opacity:0} 40%,70%{opacity:1} }
@@ -178,8 +178,8 @@ body[data-path="executive"] .cursor-glow {
    SCROLL REVEAL
    ============================================================ */
 .reveal {
-  opacity: 0;
-  transform: translateY(32px);
+  
+  
   transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
 }
 .reveal.visible { opacity: 1; transform: none; }
@@ -279,7 +279,7 @@ body[data-path="executive"] .nav-cta { background: var(--amber); }
   transition: transform .3s, opacity .3s;
 }
 .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(2) {  }
 .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
 /* Mobile overlay */
@@ -293,7 +293,7 @@ body[data-path="executive"] .nav-cta { background: var(--amber); }
   align-items: center;
   justify-content: center;
   gap: 36px;
-  opacity: 0;
+  
   pointer-events: none;
   transition: opacity .4s var(--ease);
 }
@@ -707,7 +707,7 @@ body[data-path="executive"] .transcript-status .t-dot { background: var(--amber)
   display: flex;
   flex-direction: column;
   gap: 3px;
-  opacity: 0;
+  
   transform: translateY(8px);
   transition: opacity .4s var(--ease), transform .4s var(--ease);
 }
@@ -732,7 +732,7 @@ body[data-path="executive"] .t-speaker.jarvis { color: var(--amber); }
   flex-wrap: wrap;
   gap: 8px;
   margin-top: 20px;
-  opacity: 0;
+  
   transform: translateY(8px);
   transition: opacity .4s var(--ease), transform .4s var(--ease);
 }
@@ -1535,14 +1535,9 @@ footer {
 </head>
 <body data-path="business">
 
-<!-- PRELOADER -->
-<div id="preloader">
-  <div class="preloader-logo">RASOR<span>·</span>AI</div>
 </div>
 
-<!-- CURSOR -->
-<div class="cursor" id="cursor"></div>
-<div class="cursor-glow" id="cursorGlow"></div>
+
 
 <!-- SECTION COUNTER -->
 <div id="sec-counter">01 / 08</div>
